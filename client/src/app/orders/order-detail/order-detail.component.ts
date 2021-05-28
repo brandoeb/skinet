@@ -16,7 +16,7 @@ export class OrderDetailComponent implements OnInit {
     private orderService: OrdersService,
     private bcService: BreadcrumbService,
     private activatedRoute: ActivatedRoute) {
-      this.bcService.set('@orderDetails', ' ');
+      this.bcService.set('@orderDetail', ' ');
      }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class OrderDetailComponent implements OnInit {
     this.orderService.getOrderDetail(+this.activatedRoute.snapshot.paramMap.get('id'))
     .subscribe((order: IOrder) => {
       this.order = order;
-      this.bcService.set('@orderDetails', 'Order #' + String(order.id) + '-' + order.status);
+      this.bcService.set('@orderDetail', 'Order # ' + String(order.id) + ' - ' + order.status);
     }, error => {
       console.log(error);
     });
